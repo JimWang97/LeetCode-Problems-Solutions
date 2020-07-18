@@ -37,7 +37,7 @@ root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
 思路：对树中的所有节点做递归。对树节点的遍历也使用了递归。
 
 空间复杂度：O(1)
-时间复杂度：O(nlogn)
+时间复杂度：O(nlogn) 最差时间复杂度为O(n^2)
  */
 public class S0437 {
     public class TreeNode {
