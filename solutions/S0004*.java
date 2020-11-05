@@ -21,8 +21,8 @@ nums2 = [3, 4]
 
 则中位数是 (2 + 3)/2 = 2.5
  */
-public class S0004 {
+class S0004 {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-
+        
     }
 }
