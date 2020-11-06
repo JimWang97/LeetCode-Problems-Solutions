@@ -1,7 +1,9 @@
 package solutions;
 
 import java.util.List;
+import java.util.Queue;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * 给定一个二叉树，返回其节点值的锯齿形层次遍历。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。
@@ -38,17 +40,24 @@ class S0103{
     
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> ans = new ArrayList<>();
-        List<TreeNode> ls = new ArrayList<>();
-        ls.add(root);
-        while(ls.size()!=0){
-            List<Integer> tmp = new ArrayList<>();
-            for(TreeNode node : ls){
-                tmp.add(node.val);
-                ls.add(node.left);
-                ls.add(node.right);
-                ls.remove(node);
+        if(root == null) return ans;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int level = 0;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            LinkedList<Integer> item = new LinkedList<>();
+            for(int i = 0; i < size; i++){
+                TreeNode node = queue.poll();
+                if(node.left!=null) queue.offer(node.left);
+                if(node.right!=null) queue.offer(node.right);
+                if((level&1)==0)
+                    item.add(node.val);
+                else
+                    item.push(node.val);
             }
-            ans.add(tmp);
+            ans.add(item);
+            level++;
         }
         return ans;
     }
