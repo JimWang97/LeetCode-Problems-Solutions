@@ -20,100 +20,107 @@ import java.util.Arrays;
  * https://leetcode-cn.com/problems/maximize-grid-happiness/solution/you-yi-chong-zhuang-ya-jiao-zuo-hua-dong-chuang-ko/
  */
 public class S1659 {
-    // 预处理：每一个 mask 的三进制表示
-    int[] mask_span [] = new int[243][5];
-    // dp[上一行的 mask][当前处理到的行][剩余的内向人数][剩余的外向人数]
-    Integer [][][][] dp = new Integer[243][5][7][7];
-    // 预处理：每一个 mask 包含的内向人数，外向人数，行内得分（只统计 mask 本身的得分，不包括它与上一行的），行外得分
-    int [] nx_inner = new int [243];  //内向人数
-    int [] wx_inner = new int [243]; // 外向人数
-    int [] score_inner = new int[243]; //行内得分（只统计 mask 本身的得分，不包括它与上一行的）
-    int [][] score_outer = new int[243][243];
-    int m,n,n3;
+    private int statemax = 1;
+    private int[][][][] dp;
+    private int[][] score, fix;
+    private int[] inCnt, exCnt;
 
+    public int getMaxGridHappiness(int m, int n, int introvertsCount, int extrovertsCount) {
 
+        for(int i = 0; i < n; i ++)
+            statemax *= 3;
 
-    public static int calc(int x, int y){
-        if (x == 0 || y == 0) {
-            return 0;
+        // 预处理 score 和 fix
+        score = new int[statemax][statemax];
+        fix = new int[statemax][statemax];
+        for(int state1 = 0; state1 < statemax; state1 ++){
+
+            int[] v1 = getStateArray(state1, n);
+            for(int state2 = 0; state2 < statemax; state2 ++){
+
+                int[] v2 = getStateArray(state2, n);
+                score[state1][state2] = getScore(v1, v2, n);
+                fix[state1][state2] = getFix(v1, v2, n);
+            }
         }
-        // 例如两个内向的人，每个人要 -30，一共 -60，下同
-        if (x == 1 && y == 1) {
-            return -60;
-        }
-        if (x == 2 && y == 2) {
-            return 40;
-        }
-        return -10;
+
+        // 预处理每个状态的内向人数和外向人数
+        inCnt = new int[statemax];
+        exCnt = new int[statemax];
+        for(int state = 0; state < statemax; state ++)
+            getInAndEx(state);
+
+        dp = new int[m + 1][introvertsCount + 1][extrovertsCount + 1][statemax];
+        return dfs(m, introvertsCount, extrovertsCount, 0);
     }
 
+    // 记忆化搜索
+    private int dfs(int leftrow, int in, int ex, int last){
 
-    public  int getMaxGridHappiness(int m, int n, int nx, int wx){
-        int n3 = (int)Math.pow(3, n);
-        this.n = n;
-        this.m = m;
-        this.n3 = n3;
+        if(leftrow == 0) return 0;
+        if(in == 0 && ex == 0) return 0;
 
-        for (int mask = 0; mask < n3; mask++) {
+        if(dp[leftrow][in][ex][last] != 0)
+            return dp[leftrow][in][ex][last];
 
-            //初始化mask_span
-            for (int mask_tmp=mask,i=0;i<n;i++){
-                mask_span[mask][i] = mask_tmp % 3;
-                mask_tmp /= 3;
-            }
-            for (int i=0;i<n;i++){
-                //个人分数
-                if(mask_span[mask][i]!=0){
-                    if(mask_span[mask][i]==1){
-                        nx_inner[mask]+=1;
-                        score_inner[mask] += 120;
-                    }else if (mask_span[mask][i]==2){
-                        wx_inner[mask]+=1;
-                        score_inner[mask] += 40;
-                    }
-                    //行内分数汇总
-                    if(i >= 1){
-                        score_inner[mask] += calc(mask_span[mask][i], mask_span[mask][i - 1]);
-                    }
-                }
-            }
+        int res = 0;
+        for(int state = 0; state < statemax; state ++){
+            // in 和 ex 人数够用，可以安排，则进行状态转移
+            if(in >= inCnt[state] && ex >= exCnt[state])
+                res = Math.max(res, score[state][last] + fix[last][state] + dfs(leftrow - 1, in - inCnt[state], ex - exCnt[state], state));
         }
-        //行外分数
-        for(int mask0=0;mask0<n3;mask0++){
-            for(int mask1=0;mask1<n3;mask1++){
-                for (int i = 0; i < n; i++) {
-                    score_outer[mask0][mask1] += calc(mask_span[mask0][i],mask_span[mask1][i]);
-                }
-            }
-        }
-        return dfs(0, 0, nx, wx);
+        return dp[leftrow][in][ex][last] = res;
     }
 
-    int dfs(int mask_last, int row, int nx, int wx) {
-        // 边界条件：如果已经处理完，或者没有人了
-        if (row == m || nx + wx == 0) {
-            return 0;
-        }
+    // 下面都是各种预处理需要的辅助函数
+    private int[] getStateArray(int state, int col){
 
-        //记忆化搜索
-        if (dp[mask_last][row][nx][wx] != null) {
-            return dp[mask_last][row][nx][wx];
+        int[] res = new int[col];
+        for(int i = 0; i < col; i ++){
+            res[i] = state % 3;
+            state /= 3;
         }
-
-        int best = 0;
-        for (int mask=0;mask<n3;mask++){
-            if(nx_inner[mask] > nx || wx_inner[mask] > wx){
-                continue;
-            }
-            int score = score_inner[mask] + score_outer[mask][mask_last];
-            best = Math.max(best, score + dfs(mask, row + 1, nx - nx_inner[mask], wx - wx_inner[mask]));
-        }
-
-        dp[mask_last][row][nx][wx] = best;
-        return best;
+        return res;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println(new Solution3().getMaxGridHappiness(3, 1, 2, 3));
-//    }
+    private int getScore(int[] curv, int[] lastv, int col){
+
+        int res = 0, t = 0;
+        for(int i = 0; i < col; i ++){
+            t = 0;
+            if(curv[i] == 1){
+                t = 120;
+                if(i > 0 && curv[i - 1] != 0) t -= 30;
+                if(lastv[i] != 0) t -= 30;
+                if(i + 1 < col && curv[i + 1] != 0) t -= 30;
+            }
+            else if(curv[i] == 2){
+                t = 40;
+                if(i > 0 && curv[i - 1] != 0) t += 20;
+                if(lastv[i] != 0) t += 20;
+                if(i + 1 < col && curv[i + 1] != 0) t += 20;
+            }
+            res += t;
+        }
+        return res;
+    }
+
+    private int getFix(int[] curv, int[] lastv, int col){
+
+        int res = 0;
+        for(int i = 0; i < col; i ++)
+            if(curv[i] == 1 && lastv[i] != 0) res -= 30;
+            else if(curv[i] == 2 && lastv[i] != 0) res += 20;
+        return res;
+    }
+
+    private void getInAndEx(int state){
+
+        int in = 0, ex = 0, x = state;
+        while(x != 0){
+            if(x % 3 == 1) inCnt[state] ++;
+            else if(x % 3 == 2) exCnt[state] ++;
+            x /= 3;
+        }
+    }
 }
