@@ -6,4 +6,5 @@ Record My Journey
    1. mid √ 20.12.18
    2. hard
 3. 分治
+   1. mid √
 4. 动态规划
