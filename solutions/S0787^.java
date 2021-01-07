@@ -17,8 +17,9 @@ src = 0, dst = 2, k = 1
 解释: 
 城市航班图如下
 
-
+ 
 从城市 0 到城市 2 在 1 站中转以内的最便宜价格是 200，如图中红色所示。
+https://leetcode-cn.com/problems/cheapest-flights-within-k-stops/solution/k-zhan-zhong-zhuan-nei-zui-bian-yi-de-hang-ban-b-2/
  */
 public class S0787 {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
