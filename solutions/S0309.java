@@ -38,18 +38,18 @@ f[0][2]=0
  */
 public class S0309 {
     public int maxProfit(int[] prices) {
-        if(prices.length<=0) return 0;
-        int[] dp = new int[3];
-        Arrays.fill(dp, 0);
-        dp[0] = -prices[0];
-        for(int i = 1; i<prices.length;i++){
-            int dp0 = Math.max(dp[0], dp[2]-prices[i]);
-            int dp1 = dp[0]+prices[i];
-            int dp2 = Math.max(dp[1],dp[2]);
-            dp[0] = dp0;
-            dp[1] = dp1;
-            dp[2] = dp2;
+        int len = prices.length;
+        if(len==0) {
+            return 0;
         }
-        return Math.max(dp[1], dp[2]);
+        int[][] dp = new int[len][3];
+        // 0有股票 1没股票冷冻期 2没股票非冷冻期
+        dp[0][0] = -prices[0];
+        for(int i = 1; i < len; i++) {
+            dp[i][0] = Math.max(dp[i-1][0], dp[i-1][2] - prices[i]);
+            dp[i][1] = dp[i-1][0] + prices[i];
+            dp[i][2] = Math.max(dp[i-1][1], dp[i-1][2]);
+        }
+        return Math.max(Math.max(dp[len-1][0], dp[len-1][1]),dp[len-1][2]);
     }
 }
