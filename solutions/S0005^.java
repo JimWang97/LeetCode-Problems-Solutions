@@ -12,7 +12,7 @@ package solutions;
 输出："bab"
 解释："aba" 同样是符合题意的答案。
  */
-public class S0005 {
+class S0005 {
     public String longestPalindrome(String s) {
         int len = s.length();
         boolean[][] dp = new boolean[len][len];
