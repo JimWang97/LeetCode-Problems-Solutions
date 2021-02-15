@@ -19,6 +19,11 @@ package solutions;
  *              [-3,-3,-2]]
  * 输出：-1
  * 解释：从 (0, 0) 到 (2, 2) 的路径中无法得到非负积，所以返回 -1
+ *
+ * dp[i][j][k] 表示位于[i][j]的最大值[1]或最小值[0]。
+ * 因为路径中可能有负数，所以要同时记录最大值和最小值
+ * dp[i][j][0] = min(dp[i-1][j][0]*grid[i][j], dp[i][j-1][0]*grid[i][j]) 当grid[i][j]>0时
+ * dp[i][j][0] = min(dp[i-1][j][1]*grid[i][j], dp[i][j-1][1]*grid[i][j]) 当grid[i][j]<0
  */
 public class S1594 {
     public int maxProductPath(int[][] grid) {

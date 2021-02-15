@@ -16,6 +16,8 @@ import java.util.Arrays;
  * 输入: [1,7,4,9,2,5]
  * 输出: 6
  * 解释: 整个序列均为摆动序列。
+ *
+ * 因为是长度，越长越好，所以从头开始肯定没错
  */
 public class S0376a {
     public int wiggleMaxLength(int[] nums) {

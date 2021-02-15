@@ -20,6 +20,8 @@ import java.util.HashMap;
  * 整个数组是公差为 3 的等差数列。
  *
  * 等差数列如何转换成dp表示！！！
+ * dp[i][j] 表示i,j是等差序列的最后两位。
+ * 因此dp[i][j] = dp[t][i] + 1 其中i-t=j-i
  */
 public class S1027a {
     public int longestArithSeqLength(int[] A) {

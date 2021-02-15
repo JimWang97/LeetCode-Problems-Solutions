@@ -11,6 +11,9 @@ package solutions;
  *
  * 输入：matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
  * 输出：4
+ *
+ * dp[i][j]表示第i行j列开始的左上角的正方形边长
+ * dp[i][j] = min(dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1,j-1]+1) 当matrix[i][j]==1时
  */
 public class S0221 {
     public int maximalSquare(char[][] matrix) {

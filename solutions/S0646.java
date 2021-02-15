@@ -17,6 +17,8 @@ import java.util.Arrays;
  * 输入：[[1,2], [2,3], [3,4]]
  * 输出：2
  * 解释：最长的数对链是 [1,2] -> [3,4]
+ *
+ * 按照数对的第一位排序，然后逆序往前找数对的第二位小于当前数对的第一位时，dp[i]=max(dp[j]+1,dp[i])
  */
 public class S0646 {
     public int findLongestChain(int[][] pairs) {

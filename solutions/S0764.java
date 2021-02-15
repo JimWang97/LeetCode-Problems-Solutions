@@ -51,6 +51,9 @@ import java.util.List;
  * 11011
  *
  * 在上面的网格中，最大加号标志的阶只能是2。一个标志已在图中标出。
+ *
+ * dp[i][j][k] k=0表示i,j这个点向左的连续个数，k=1表示向上的连续个数。
+ * 然后根据向左和向上的值，往下和右找。如果都能对上就是一个十字。比较边长
  */
 public class S0764 {
     public static int orderOfLargestPlusSign(int N, int[][] mines) {

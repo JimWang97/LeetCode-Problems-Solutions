@@ -24,6 +24,10 @@ package solutions;
  * 输入: poured(倾倒香槟总杯数) = 2, query_glass(杯子的位置数) = 1, query_row(行数) = 1
  * 输出: 0.5
  * 解释: 我们在顶层（下标是（0，0）倒了两杯香槟后，有一杯量的香槟将从顶层溢出，位于（1，0）的玻璃杯和（1，1）的玻璃杯平分了这一杯香槟，所以每个玻璃杯有一半的香槟。
+ *
+ * 第一层倒入所有的酒，-1保留，然后全部其他的都给下一层，左右各一半
+ * dp[i+1][j] += (dp[i][j]-1)/2
+ * dp[i+1][j+1] += (dp[i][j]-1)/2
  */
 public class S0799 {
     public double champagneTower(int poured, int query_row, int query_glass) {

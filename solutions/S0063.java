@@ -24,6 +24,8 @@ package solutions;
  * 从左上角到右下角一共有 2 条不同的路径：
  * 1. 向右 -> 向右 -> 向下 -> 向下
  * 2. 向下 -> 向下 -> 向右 -> 向右
+ *
+ * 如果当前不是障碍物，那么到达当前的路径就是左边的格子+上面的格子
  */
 public class S0063 {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {

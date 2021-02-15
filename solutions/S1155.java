@@ -14,6 +14,9 @@ package solutions;
  *
  * 输入：d = 1, f = 6, target = 3
  * 输出：1
+ *
+ * dp[d][d*f] 骰子数和最大点数,表示d个骰子，结果是d*f的组合情况
+ * dp[i][j] += dp[i-1][j-k] k是所有一个骰子可能得到的点数
  */
 public class S1155 {
     public int numRollsToTarget(int d, int f, int target) {

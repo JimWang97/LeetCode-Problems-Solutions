@@ -29,6 +29,7 @@ import java.util.List;
 
 思路：
 动态规划，自下而上计算
+ dp[i][j] = min(dp[i-1][j-1],dp[i-1][j])+triangle[i][j]
  */
 public class S0120 {
 //    public int minimumTotal(List<List<Integer>> triangle) {

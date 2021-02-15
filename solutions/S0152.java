@@ -11,6 +11,8 @@ package solutions;
  * 输入: [2,3,-2,4]
  * 输出: 6
  * 解释: 子数组 [2,3] 有最大乘积 6。
+ *
+ * 两个数组，一个记录最小，一个记录最大，为了解决负数情况
  */
 public class S0152 {
     public int maxProduct(int[] nums) {

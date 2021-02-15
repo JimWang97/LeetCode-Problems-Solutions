@@ -11,6 +11,9 @@ package solutions;
  *  解释: 有两种方式可以凑成总金额:
  * 5=5
  * 5=1+1+1+1+1
+ *
+ * 背包问题
+ * dp[i] = dp[i] + dp[i-coin]
  */
 public class interview_08_11a {
     public int waysToChange(int n) {

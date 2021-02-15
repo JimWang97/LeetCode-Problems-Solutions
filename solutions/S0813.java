@@ -15,6 +15,10 @@ package solutions;
  * A 的最优分组是[9], [1, 2, 3], [9]. 得到的分数是 9 + (1 + 2 + 3) / 3 + 9 = 20.
  * 我们也可以把 A 分成[9, 1], [2], [3, 9].
  * 这样的分组得到的分数为 5 + 2 + 6 = 13, 但不是最大值.
+ *
+ * dp[i][j] 表示分了j组，前i个数的最大平均和
+ * dp[i][j] = max(dp[i][j], dp[t][j-1] + t~i的平均数) 其中t<i
+ * 理解为每次分一个组，一共分k次
  */
 public class S0813 {
     public double largestSumOfAverages(int[] A, int K) {

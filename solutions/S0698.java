@@ -11,6 +11,8 @@ import java.util.Arrays;
  * 输入： nums = [4, 3, 2, 3, 5, 2, 1], k = 4
  * 输出： True
  * 说明： 有可能将其分成 4 个子集（5），（1,4），（2,3），（2,3）等于总和。
+ *
+ * 使用回溯，用一个used数组来记录已经用过的，然后多次寻找sum/k就可以了
  */
 public class S0698 {
     public boolean canPartitionKSubsets(int[] nums, int k) {

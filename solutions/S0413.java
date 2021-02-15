@@ -29,6 +29,8 @@ package solutions;
  * A = [1, 2, 3, 4]
  *
  * 返回: 3, A 中有三个子等差数组: [1, 2, 3], [2, 3, 4] 以及自身 [1, 2, 3, 4]。
+ * dp[i] = dp[i-1] +1; 当A[i]-A[i-1]=A[i-1]-A[i-2]的时候
+ * sum+=dp[i]
  */
 public class S0413 {
     public static int numberOfArithmeticSlices(int[] A) {

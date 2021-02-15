@@ -11,6 +11,10 @@ package solutions;
  * 解释: 在 "sea" 中删除 "s" 并将 "s" 的值(115)加入总和。
  * 在 "eat" 中删除 "t" 并将 116 加入总和。
  * 结束时，两个字符串相等，115 + 116 = 231 就是符合条件的最小和。
+ *
+ * dp[i][j] 表示s1的第i个与s2的第j个对应时，需要最小删除和
+ * dp[i][j] = dp[i-1][j-1] 当s1[i]==s2[j]
+ *          = min(dp[i-1][j] + s1[i], dp[i][j-1] + s2[j]) 当不想等的时候，选最小的删除
  */
 public class S0712 {
     public int minimumDeleteSum(String s1, String s2) {

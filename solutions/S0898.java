@@ -19,6 +19,8 @@ import java.util.Set;
  * 输出：1
  * 解释：
  * 只有一个可能的结果 0 。
+ *
+ * 用set来获取不重复值
  */
 public class S0898 {
     public int subarrayBitwiseORs(int[] A) {

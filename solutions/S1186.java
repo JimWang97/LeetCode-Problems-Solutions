@@ -15,6 +15,12 @@ package solutions;
  * 输入：arr = [1,-2,0,3]
  * 输出：4
  * 解释：我们可以选出 [1, -2, 0, 3]，然后删掉 -2，这样得到 [1, 0, 3]，和最大。
+ *
+ * 多一个纬度来表示是否删除过
+ * 0表示不删除第i个数
+ * dp[i][0] = Math.max(dp[i-1][0], 0) + arr[i];
+ * 1表示前i个已经删除过了，可能是删当前这个，也可能是之前就删过了
+ * dp[i][1] = Math.max(dp[i-1][1]+arr[i], dp[i-1][0]);
  */
 public class S1186 {
     public int maximumSum(int[] arr) {
