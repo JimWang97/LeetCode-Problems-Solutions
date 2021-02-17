@@ -21,7 +21,7 @@ package solutions;
  *
  * 贪心算法
  */
-public class S1405 {
+public class S1405a {
     private int[] char2num;
 
     private char nextChar(char exclude) {
