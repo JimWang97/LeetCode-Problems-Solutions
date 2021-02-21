@@ -20,6 +20,8 @@ package solutions;
  * 边长为 2 的正方形有 4 个。
  * 边长为 3 的正方形有 1 个。
  * 正方形的总数 = 10 + 4 + 1 = 15.
+ *
+ * min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])+1
  */
 public class S1277 {
     public int countSquares(int[][] matrix) {

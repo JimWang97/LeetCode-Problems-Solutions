@@ -20,6 +20,13 @@ package solutions;
  * 解释："ccbccacc" 也是一种正确答案。
  *
  * 贪心算法
+ * 在结果字符串最后两个字符不一样的情况下，添加三个字符中剩余次数最多的；
+ * 在结果字符串最后两个字符一样的情况下，添加与最后字符不一样的另外两个字符中剩余次数较多的。
+ *
+ * 作者：cjjohn
+ * 链接：https://leetcode-cn.com/problems/longest-happy-string/solution/javatan-xin-suan-fa-jian-ji-xie-fa-2ms-by-cjjohn/
+ * 来源：力扣（LeetCode）
+ * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  */
 public class S1405a {
     private int[] char2num;

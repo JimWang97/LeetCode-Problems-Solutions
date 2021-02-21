@@ -16,6 +16,8 @@ import java.util.Set;
  * 输入：nums = [1,1,1,1,1], target = 2
  * 输出：2
  * 解释：总共有 2 个不重叠子数组（加粗数字表示） [1,1,1,1,1] ，它们的和为目标值 2 。
+ *
+ * 从前往后遍历，用set记录已经遍历过的数的总和。每次新来一个，就去set找是能通过删除之前的数，凑成target
  */
 public class S1546a {
     public int maxNonOverlapping(int[] nums, int target) {

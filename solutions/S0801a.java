@@ -17,6 +17,8 @@ package solutions;
  * 交换 A[3] 和 B[3] 后，两个数组如下:
  * A = [1, 3, 5, 7] ， B = [1, 2, 3, 4]
  * 两个数组均为严格递增的。
+ *
+ * dp[i][2] i表示第i个字符，1表示交换，0表示不交换
  */
 public class S0801a {
     public int minSwap(int[] A, int[] B) {

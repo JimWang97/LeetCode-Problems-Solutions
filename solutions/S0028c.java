@@ -10,8 +10,13 @@ package solutions;
  *
  * 输入: haystack = "hello", needle = "ll"
  * 输出: 2
+ *
+ * 构造dp，dp[i][j]表示当前模版坐标是i，遇到字符为j的时候，下一步的状态。
+ * 状态就是匹配到了第几个字符了。比如dp[0][needle.charAt[0]] = 1; 目前模版坐标0，当遇到模版第一个字符时，下一个状态就移动了下一个字符。
+ * 用X记录影子状态。**所谓影子状态，就是和当前状态具有相同的前缀**。
+ * 在构建当前状态 `j` 的转移方向时，只有字符 `pat[j]` 才能使状态推进（`dp[j][pat[j]] = j+1`）；而对于其他字符只能进行状态回退，应该去请教影子状态 `X` 应该回退到哪里（`dp[j][other] = dp[X][other]`，其中 `other` 是除了 `pat[j]` 之外所有字符）。
  */
-public class S0028 {
+public class S0028c {
     public int strStr(String haystack, String needle) {
         int len = needle.length();
         int[][] dp = new int[len][256];
