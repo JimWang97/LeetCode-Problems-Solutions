@@ -23,6 +23,8 @@ import java.util.Set;
  * 输入：n = 2, languages = [[1],[2],[1,2]], friendships = [[1,2],[1,3],[2,3]]
  * 输出：1
  * 解释：你可以选择教用户 1 第二门语言，也可以选择教用户 2 第一门语言。
+ *
+ * 对所有没有共同语言的，选一门最多人的共同语言，让他们学
  */
 public class S1733 {
     public int minimumTeachings(int n, int[][] languages, int[][] friendships) {

@@ -21,6 +21,8 @@ package solutions;
  * nums[2] + nums[1] = 2 + 2 = 4.
  * nums[3] + nums[0] = 3 + 1 = 4.
  * 对于每个 i ，nums[i] + nums[n-1-i] = 4 ，所以 nums 是互补的。
+ *
+ * 差分数组
  */
 public class S1674a {
     public int minMoves(int[] nums, int limit) {

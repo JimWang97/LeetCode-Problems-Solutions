@@ -15,6 +15,9 @@ package solutions;
  * 输入：nums = [1,-2,-3,4]
  * 输出：4
  * 解释：数组本身乘积就是正数，值为 24 。
+ *
+ * pos和neg记录到目前为止最长的乘积为正和负的长度
+ * 遇到0时，后遇到负数，则pos=0
  */
 public class S1567a {
     public int getMaxLen(int[] nums) {

@@ -23,6 +23,9 @@ import java.util.Arrays;
  * 解释：2 次操作从 word1 获得 word2 。
  * 执行操作 1："abc" -> "acb"
  * 执行操作 1："acb" -> "bca"
+ *
+ * 统计两个数组里每个词出现的次数。比较分布是否一致，如果一个字符串有，而另一个没有，那么不可能通过交换相等。
+ * 将分布进行排序，如果按顺序的两边都相等，说明是有办法通过交换来匹配的。
  */
 public class S1657 {
     public boolean closeStrings(String word1, String word2) {

@@ -22,7 +22,7 @@ import java.util.HashMap;
 输入：4
 输出：[2,1,4,3]
  */
-public class S0962 {
+public class S0932 {
     Map<Integer, int[]> memo;
     public int[] beautifulArray(int N) {
         memo = new HashMap<>();

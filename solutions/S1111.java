@@ -30,6 +30,9 @@ package solutions;
  *
  * 输入：seq = "(()())"
  * 输出：[0,1,1,1,1,0]
+ *
+ * flagA和flagB来标记A和B已有的左括号数。
+ * 每次左括号都分配给flagA比较小的值。而右括号分配给flag比较大的
  */
 public class S1111 {
     public int[] maxDepthAfterSplit(String seq) {

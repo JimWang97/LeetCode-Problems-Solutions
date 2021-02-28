@@ -24,6 +24,8 @@ import java.util.Stack;
  * - 删除 "cdbcbbaa" 中加粗的 "ba" ，得到 s = "cdbcba" ，加 5 分。
  * - 删除 "cdbcba" 中加粗的 "ba" ，得到 s = "cdbc" ，加 5 分。
  * 总得分为 5 + 4 + 5 + 5 = 19 。
+ *
+ * 用两个栈，删了之后，那么没删的在栈内有成了连续的ab
  */
 public class S1717a {
     public int maximumGain(String s, int x, int y) {

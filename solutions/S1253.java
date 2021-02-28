@@ -24,6 +24,8 @@ import java.util.List;
  * 输入：upper = 2, lower = 1, colsum = [1,1,1]
  * 输出：[[1,1,0],[0,0,1]]
  * 解释：[[1,0,1],[0,1,0]] 和 [[0,1,1],[1,0,0]] 也是正确答案。
+ *
+ * 判断一列和一行的总数，如果还能放就放，不能放就下一列或下一行
  */
 public class S1253 {
     public List<List<Integer>> reconstructMatrix(int upper, int lower, int[] colsum) {

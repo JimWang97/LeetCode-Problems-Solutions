@@ -26,6 +26,8 @@ package solutions;
  * - 从 word1 中取第一个字符：merge = "cbca"，word1 = "baa"，word2 = "aaa"
  * - 从 word1 中取第一个字符：merge = "cbcab"，word1 = "aa"，word2 = "aaa"
  * - 将 word1 和 word2 中剩下的 5 个 a 附加到 merge 的末尾。
+ *
+ * 在两个字符串中找递增的连续子串，然后选大的那个插入。
  */
 public class S1754 {
     public String largestMerge(String word1, String word2) {

@@ -19,6 +19,8 @@ import java.util.List;
  * 输出：[[5],[0,1,2],[3,4,6]]
  * 解释：
  * 其他可能的解决方案有 [[2,1,6],[5],[0,4,3]] 和 [[5],[0,6,2],[4,3,1]]。
+ *
+ * 将人数从小到大排序，能放进一组就放，不行就新开一组
  */
 public class S1282 {
     public List<List<Integer>> groupThePeople(int[] groupSizes) {

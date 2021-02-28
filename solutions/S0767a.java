@@ -10,6 +10,9 @@ package solutions;
  *
  * 输入: S = "aab"
  * 输出: "aba"
+ *
+ * 找出频率最高的，把它放在偶数位。放完后，从那个位置继续放别的字母，也是中间隔一个。
+ * 到了res.length后，把index设为1，开始填充奇数位
  */
 public class S0767a {
     public String reorganizeString(String S) {

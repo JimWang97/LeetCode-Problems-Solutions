@@ -18,6 +18,9 @@ import java.util.Set;
  * 输入：s = "aab"
  * 输出：0
  * 解释：s 已经是优质字符串。
+ *
+ * 统计频率，放入set，如果发现有相同频率的，频率-1。次数+1。在判断
+ * 一直到不重复为止
  */
 public class S1647 {
     public int minDeletions(String s) {
