@@ -16,6 +16,7 @@ import java.util.Arrays;
 public class offer40a {
     public int[] getLeastNumbers(int[] arr, int k) {
         helper(arr,k, 0, arr.length-1);
+
         return Arrays.copyOfRange(arr, 0, k);
     }
 
