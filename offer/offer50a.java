@@ -16,6 +16,8 @@ import java.util.Map;
  *
  * s = ""
  * 返回 " "
+ *
+ * 使用LinkedHashMap，记录插入顺序
  */
 public class offer50a {
     public char firstUniqChar(String s) {

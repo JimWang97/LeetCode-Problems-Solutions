@@ -16,6 +16,8 @@ import java.util.Queue;
  * ["MaxQueue","push_back","push_back","max_value","pop_front","max_value"]
  * [[],[1],[2],[],[],[]]
  * 输出: [null,null,null,2,1,2]
+ *
+ * 双端队列。每次插入的时候，把前面小于的全部先删除，在插入
  */
 public class offer59_2a {
     class MaxQueue {
@@ -36,7 +38,7 @@ public class offer59_2a {
                 q.removeLast();
             }
             q.addLast(value);
-            q.add(value);
+            q1.add(value);
         }
 
         public int pop_front() {

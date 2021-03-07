@@ -12,6 +12,9 @@ package offer;
  *
  * 输入：n = 3
  * 输出：3
+ *
+ * 可以发现规律 占1位的10个，占2位的10-99 90个。占3位的 100-999 900个。
+ * 可以计算获得是哪一个数中第几位。
  */
 public class offer44a {
     public int findNthDigit(int n) {

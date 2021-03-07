@@ -10,6 +10,8 @@ package offer;
  *
  * 输入: [7,5,6,4]
  * 输出: 5
+ *
+ * 通过递归归并排序，在合并的时候，如果右边的数小于左边的，则ans+1
  */
 public class offer51b {
     public int reversePairs(int[] nums) {
@@ -20,9 +22,6 @@ public class offer51b {
         }
 
         int[] copy = new int[len];
-        for (int i = 0; i < len; i++) {
-            copy[i] = nums[i];
-        }
         System.arraycopy(nums, 0, copy, 0, nums.length);
 
         int[] temp = new int[len];

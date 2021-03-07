@@ -10,6 +10,8 @@ package offer;
  * <p>
  * 输入：nums = [3,4,3,3]
  * 输出：4
+ *
+ * 位计算，统计二进制中每一位统计所有数的和，然后%3就是唯一出现的那一个了
  */
 public class offer56_2a {
     public int singleNumber(int[] nums) {

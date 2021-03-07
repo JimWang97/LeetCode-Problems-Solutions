@@ -1,6 +1,7 @@
 package offer;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * 剑指 Offer 33. 二叉搜索树的后序遍历序列
@@ -19,6 +20,9 @@ import java.util.Arrays;
  *
  * 输入: [1,6,3,2,5]
  * 输出: false
+ *
+ * 思路：最后一个是根节点，往前遍历大于根节点的是右子树，从第一个小于根节点的开始
+ * 左边的都得小于根节点，都是左子树，递归
  */
 public class offer33 {
     public boolean verifyPostorder(int[] postorder) {

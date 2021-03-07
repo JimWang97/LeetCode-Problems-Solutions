@@ -29,6 +29,10 @@ import java.util.PriorityQueue;
  * ["MedianFinder","addNum","findMedian","addNum","findMedian"]
  * [[],[2],[],[3],[]]
  * 输出：[null,null,2.00000,null,2.50000]
+ *
+ * 两个堆，一个大顶堆一个小顶堆。维持两个堆的大小平衡。就可以理解为把一个数组
+ * 分成两堆，左边是小的，右边是大的，求中位数的时候，小的最右边 和 大的最左边
+ * 就是候选中位数，奇数就取小的最右。偶数就求平均
  */
 public class offer41a {
 
