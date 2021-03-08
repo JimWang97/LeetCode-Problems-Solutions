@@ -1,5 +1,8 @@
 package offer;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
  * 剑指 Offer 56 - II. 数组中数字出现的次数 II
  * 在一个数组 nums 中除一个数字只出现一次之外，其他数字都出现了三次。请找出那个只出现一次的数字。
@@ -18,7 +21,7 @@ public class offer56_2a {
         if (nums == null) {
             return 0;
         }
-
+        Map<Integer,Integer> map = new LinkedHashMap<>();
         int[] bitSumArray = new int[32];    // 用于记录 数组中所有数字 的 每一位的和
         for (int num : nums) {
             /*
