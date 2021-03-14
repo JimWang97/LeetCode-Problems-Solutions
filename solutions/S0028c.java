@@ -17,31 +17,32 @@ package solutions;
  * 在构建当前状态 `j` 的转移方向时，只有字符 `pat[j]` 才能使状态推进（`dp[j][pat[j]] = j+1`）；而对于其他字符只能进行状态回退，应该去请教影子状态 `X` 应该回退到哪里（`dp[j][other] = dp[X][other]`，其中 `other` 是除了 `pat[j]` 之外所有字符）。
  */
 public class S0028c {
-    public int strStr(String haystack, String needle) {
-        int len = needle.length();
-        int[][] dp = new int[len][256];
-        int X = 0;
-        if(needle.length()==0) {
-            return 0;
-        }
-        if(haystack.length()==0) {
+    class Solution {
+        public int strStr(String haystack, String needle) {
+            if(needle.length()==0) {
+                return 0;
+            }
+            int M = needle.length();
+            int[][] dp = new int[M][256];
+            dp[0][needle.charAt(0)] = 1;
+            int X = 0;
+            for(int i = 1; i < M; i++) {
+                for(int j = 0; j < 256; j++) {
+                    dp[i][j] = dp[X][j];
+                }
+                dp[i][needle.charAt(i)] = i+1;
+                X = dp[X][needle.charAt(i)];
+            }
+
+            int len = haystack.length();
+            int ans = 0;
+            for(int i = 0; i < len; i++) {
+                ans = dp[ans][haystack.charAt(i)];
+                if(ans==M) {
+                    return i-M+1;
+                }
+            }
             return -1;
         }
-        dp[0][needle.charAt(0)] = 1;
-        for(int i = 1; i < len; i++) {
-            for(int j = 0; j < 256; j++) {
-                dp[i][j] = dp[X][j];
-            }
-            dp[i][needle.charAt(i)] = i+1;
-            X = dp[X][needle.charAt(i)];
-        }
-        int j = 0;
-        for(int i = 0; i < haystack.length(); i++) {
-            j = dp[j][haystack.charAt(i)];
-            if(j==len) {
-                return i - len +1;
-            }
-        }
-        return -1;
     }
 }
