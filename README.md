@@ -14,3 +14,6 @@ Record My Journey
     1. mid √ 21.02.17
     2. hard
 5. 贪心算法
+    1. mid √
+6. 图
+    1. mid
