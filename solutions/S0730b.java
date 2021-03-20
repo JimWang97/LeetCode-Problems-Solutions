@@ -20,6 +20,10 @@ package solutions;
  * 解释：
  * 6 个不同的非空回文子字符序列分别为：'b', 'c', 'bb', 'cc', 'bcb', 'bccb'。
  * 注意：'bcb' 虽然出现两次但仅计数一次。
+ *
+ * dp[k][i][j] 表示回文的最外层是第k个字符，从i到j的回文数。
+ * 当i==j并且S.ca(i)==k的时候，dp[k][i][j]==1
+ * 当S.ca(i)==k,S.ca(j)==k的时候，dp[k][i][j] = dp[1-4][i+1][j-1]
  */
 public class S0730b {
     public int countPalindromicSubsequences(String S) {

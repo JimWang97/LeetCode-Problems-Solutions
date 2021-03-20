@@ -33,6 +33,9 @@ import java.util.HashMap;
  * [[1,0,0,0],
  *  [0,0,0,0]]
  * 因此，结果为 [2] 。
+ *
+ * 用并查集，逆向考虑，先把砖块要被打的砖头删除，剩下的与顶层做union，统计这回跟顶层union的数量。从最后打掉的砖块开始
+ * 一块一块的往上补，每次都union砖块的上下左右，最后在求
  */
 public class S0803b {
     private int row;

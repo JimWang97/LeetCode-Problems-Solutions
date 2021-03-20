@@ -18,6 +18,8 @@ import java.util.Stack;
  * 输入：nums = [2,6,4,8,10,9,15]
  * 输出：5
  * 解释：你只需要对 [6, 4, 8, 10, 9] 进行升序排序，那么整个表都会变为升序排序。
+ *
+ * 从左往右遍历，找到一个数小于左侧的最大值时j，向左遍历，找到它该放入的位置i。那么j-i就是这个数组的距离。i取每次的最小值，j取最大值。
  */
 public class S0581a {
     public int findUnsortedSubarray(int[] nums) {
