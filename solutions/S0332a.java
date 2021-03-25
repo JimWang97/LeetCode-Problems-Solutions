@@ -21,24 +21,32 @@ import java.util.*;
  * 输入：[["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
  * 输出：["JFK", "MUC", "LHR", "SFO", "SJC"]
  */
-public class S0332 {
+public class S0332a {
     class Solution {
         List<String> ans = new ArrayList<>();
+        Map<String, PriorityQueue<String>> graph;
         public List<String> findItinerary(List<List<String>> tickets) {
-            Map<String, ArrayList<String>> graph = new HashMap<>();
+            graph = new HashMap<>();
             for(List<String> ticket : tickets) {
-                String from = ticket.get(0);
-                String to = ticket.get(1);
-                ArrayList<String> s = graph.getOrDefault(from, new ArrayList<>());
-                s.add(to);
-                Arrays.sort(s,);
-                graph.put(from, s);
+                String src = ticket.get(0), dst = ticket.get(1);
+                if (!graph.containsKey(src)) {
+                    graph.put(src, new PriorityQueue<String>());
+                }
+                graph.get(src).offer(dst);
             }
-            helper(graph, tickets);
+            dfs("JFK");
+            Collections.reverse(ans);
+            return ans;
         }
 
-        private void helper(Map<String, Set<String>> graph, List<List<String>> tickets) {
-
+        private void dfs(String src) {
+            while(graph.containsKey(src) && graph.get(src).size()!=0) {
+                String tmp = graph.get(src).poll();
+                dfs(tmp);
+            }
+            ans.add(src);
         }
+
+
     }
 }
