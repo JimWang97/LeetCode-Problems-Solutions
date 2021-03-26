@@ -16,4 +16,6 @@ Record My Journey
 5. 贪心算法
     1. mid √
 6. 图
-    1. mid
+    1. mid √ 3.26
+7. random 
+    1. 1 easy 2 mid 1 hard每天
