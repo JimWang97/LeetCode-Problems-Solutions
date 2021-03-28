@@ -1,5 +1,6 @@
 package solutions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,11 +28,82 @@ import java.util.List;
  * 输入 mou， mous 和 mouse 后系统都返回 ["mouse","mousepad"]
  *
  * https://leetcode-cn.com/problems/search-suggestions-system/solution/zi-dian-shu-dfsjava-by-chopinxbp/
+ *
+ * 字典树
  */
 public class S1268 {
     class Solution {
-        public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+        class Node {
+            boolean end = false;
+            String str = null;
+            int count = 0;
+            Node[] children = new Node[26];
+        }
 
+        class DictTree {
+            Node root = new Node();
+            public void insert(String[] products) {
+                for(String p : products) {
+                    insertWord(p);
+                }
+            }
+            public void insertWord(String word) {
+                Node node = root;
+                for(char c : word.toCharArray()) {
+                    if(node.children[c-'a']==null) {
+                        node.children[c-'a'] = new Node();
+                    }
+                    node = node.children[c-'a'];
+                }
+                if(!node.end) {
+                    node.end = true;
+                    node.str = word;
+                }
+                node.count++;
+            }
+            public List<List<String>> searchWord(String searchWord) {
+                List<List<String>> ans = new ArrayList<>();
+                int len = searchWord.length();
+                for(int i = 1; i <= len; i++) {
+                    ans.add(search(searchWord.substring(0,i)));
+                }
+                return ans;
+            }
+
+            private List<String> search(String substring) {
+                List<String> ans = new ArrayList<>();
+                Node node = root;
+                for(char c : substring.toCharArray()) {
+                    if(node.children[c-'a']==null) {
+                        return ans;
+                    }
+                    node = node.children[c-'a'];
+                }
+                solution(node, ans);
+                return ans;
+            }
+
+            private void solution(Node node, List<String> ans) {
+                if(node.end) {
+                    for(int i = 0; i < node.count; i++) {
+                        ans.add(node.str);
+                        if(ans.size()==3) return;
+                    }
+                }
+                for(Node n:node.children) {
+                    if(n!=null) {
+                        solution(n, ans);
+                    }
+                    if(ans.size()==3) return;
+                }
+            }
+        }
+
+        public List<List<String>> suggestedProducts(String[] products, String searchWord) {
+            DictTree dt = new DictTree();
+            dt.insert(products);
+            List<List<String>> lists = dt.searchWord(searchWord);
+            return lists;
         }
     }
 }
