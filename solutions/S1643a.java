@@ -27,6 +27,8 @@ import java.util.List;
  * 输出："HHHVV"
  * 解释：能前往 (2, 3) 的所有导航指令 按字典序排列后 如下所示：
  * ["HHHVV", "HHVHV", "HHVVH", "HVHHV", "HVHVH", "HVVHH", "VHHHV", "VHHVH", "VHVHH", "VVHHH"].
+ *
+ * dp表示已经操作了几次，操作了几次h时，以H开头的个数。如果k大于这个，那么就说明第一位不能是H开头，是V开头。重复后面每一位
  */
 public class S1643a {
     class Solution {
@@ -37,11 +39,11 @@ public class S1643a {
             int v = rows;
             // 一共操作几次，已经操作了几次h
             int[][] dp = new int[h+v][h];
-            dp[0][0] = 1;
+            dp[0][0] = 1; // 表示第一个插入的就是h
             for(int i = 1; i < h+v; i++) {
                 dp[i][0] = 1;
                 for(int j = 1; j<=i&&j<h;j++) {
-                    dp[i][j] = dp[i-1][j] + dp[i-1][j-1];
+                    dp[i][j] = dp[i-1][j] + dp[i-1][j-1]; // 表示最后一位插入v还是h的所有可能
                 }
             }
 
