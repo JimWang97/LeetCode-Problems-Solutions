@@ -34,7 +34,6 @@ public class S1131 {
                 dmin = Math.min(dmin, arr1[i]-arr2[i]-i);
                 dmax = Math.max(dmax, arr1[i]-arr2[i]-i);
             }
-
             return Math.max(Math.max(amax-amin, bmax-bmin), Math.max(cmax-cmin, dmax-dmin));
         }
     }
