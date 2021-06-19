@@ -18,7 +18,7 @@ package solutions;
  * 转移公式dp[i][j] = (dp[i-1][j]&&(s1[i-1]==s3[i+j-1]))||(dp[i][j-1]&&(s2[j-1]==s3[i+j-1]))
  * 时间O(n*m)
  */
-public class S0097 {
+public class S0097a {
     public boolean isInterleave(String s1, String s2, String s3) {
         int len1 = s1.length(), len2 = s2.length(), len3 = s3.length();
         if (len3 != len1 + len2)
